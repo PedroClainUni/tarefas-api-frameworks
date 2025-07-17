@@ -85,7 +85,10 @@ async function menuCotacoes() {
 
     try {
         const resultado = await conversor.cotarPorPeriodo(valor, moedaOrigem, moedaDestino, dataInicial, dataFinal); // implementar o método cotarPorPeriodo no arquivo conversor.js
-        // devido a complexidade da informação retornada, você terá a liberdade para printar o resultado da forma que desejar.
+        
+        await Promise.all(resultado)
+            .then(result => console.log(`${result.data}: ${result.valor}`))
+
     } catch (error) {
         console.log(error.message);
     }
